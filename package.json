@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.12.12",
+    "axios": "^1.8.4",
     "inngest": "^3.34.1",
     "mongoose": "^8.13.1",
     "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hot-toast": "^2.5.1"
+    "react-hot-toast": "^2.5.2",
+    "toast": "^0.5.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
