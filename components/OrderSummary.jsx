@@ -117,7 +117,7 @@ const OrderSummary = () => {
               <ul className="absolute w-full bg-white border shadow-md mt-1 z-10 py-1.5">
                 {userAddresses.map((address, index) => (
                   <li
-                    key={address._id}
+                    key={index}
                     className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"
                     onClick={() => handleAddressSelect(address)}
                   >
