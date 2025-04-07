@@ -32,6 +32,7 @@ export const AppContextProvider = (props) => {
     const fetchProductData = async () => {
         try {
             const { data } = await axios.get('/api/product/list');
+           // console(data.products)
             if (data.success) {
               setProducts(data.products);
             } else {

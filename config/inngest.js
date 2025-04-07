@@ -44,7 +44,7 @@ export const SyncUserCreation = inngest.createFunction(
               _id: id,
               email: email_addresses[0].email_address,
               name: `${first_name} ${last_name}`,
-              imageUrl: image_url || assets.user_icon  // Handle missing imageUrl
+              imageUrl: image_url 
           };
 
           console.log("📥 User Data to Insert:", userData); // Log data before insertion
