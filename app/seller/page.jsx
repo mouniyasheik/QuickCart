@@ -23,7 +23,7 @@ const AddProduct = () => {
      formData.append('category',category)
      formData.append('price',price)
      formData.append('offerPrice',offerPrice)
-     formData.append('userId', userId);
+    
      for(let i=0;i<files.length;i++){
       formData.append('images',files[i])
      }

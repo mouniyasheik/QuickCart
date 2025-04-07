@@ -16,6 +16,9 @@ export const useAppContext = () => {
 
 export const AppContextProvider = (props) => {
 
+    
+   
+    
     const {user}=useUser()
     const {getToken} = useAuth()
     const currency = process.env.NEXT_PUBLIC_CURRENCY
@@ -78,7 +81,7 @@ export const AppContextProvider = (props) => {
         try{
         const token = await getToken()
         await axios.post('/api/cart/update',{cartData},
-            {headers:{Authentication:`Bearer ${token}`}} )
+            {headers:{Authorization:`Bearer ${token}`}} )
             toast.success("Item added to cart")
         }catch(error){
               toast.error(error.message)
@@ -99,7 +102,7 @@ export const AppContextProvider = (props) => {
             try{
             const token = await getToken()
             await axios.post('/api/cart/update',{cartData},
-                {headers:{Authentication:`Bearer ${token}`}} )
+                {headers:{Authorization:`Bearer ${token}`}} )
                 toast.success("cart updated")
             }catch(error){
                   toast.error(error.message)

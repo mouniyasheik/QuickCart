@@ -26,11 +26,7 @@ const ProductList = () => {
         toast.error(data.message || "Failed to fetch products");
       }
     } catch (error) {
-      toast.error(
-        error.response?.data?.message ||
-        error.message ||
-        "An unexpected error occurred"
-      );
+      toast.error(    error.message    );
     } finally {
       setLoading(false);
     }
@@ -40,7 +36,7 @@ const ProductList = () => {
     if (user) {
       fetchSellerProduct();
     }
-  }, [user, getToken, router]);
+  }, [user]);
 
   return (
     <div className="flex-1 min-h-screen flex flex-col justify-between">

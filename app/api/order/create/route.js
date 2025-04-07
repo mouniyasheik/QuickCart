@@ -14,18 +14,12 @@ export async function POST(request) {
     }
 
     // Calculate the total amount
-    const products = await Promise.all(
-      items.map(async (item) => {
-        const product = await Product.findById(item.product);
-        if (!product) throw new Error(`Product with ID ${item.product} not found`);
-        if (item.quantity <= 0) throw new Error(`Invalid quantity for product ID ${item.product}`);
-        return product.offerPrice * item.quantity;
-      })
-    );
+    
 
-    const amount = products.reduce((acc, price) => acc + price, 0);
-    const finalAmount = amount + Math.floor(amount * 0.02); // Adding 2% fee
-
+    const amount = await items.reduce(async(acc, item) =>{
+       const product = await Product.findById(item.product);
+       return acc+ product.offerPrice * item.quantity;
+    },0)
     // Send event
     await inngest.send({
       name: 'order/created',
@@ -33,8 +27,8 @@ export async function POST(request) {
         userId,
         address,
         items,
-        amount: finalAmount,
-        date: new Date().toISOString(),
+        amount: amount+Math.floor(amount* 0.02),
+        date: Date().now(),
       },
     });
 

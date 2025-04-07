@@ -48,12 +48,12 @@ const OrderSummary = () => {
           return toast.error('Please select an address');
         }
     
-        const cartItemsArray = Object.keys(cartItems).map((key) => ({
+        let cartItemsArray = Object.keys(cartItems).map((key) => ({
           product: key,
           quantity: cartItems[key]
           // You might need to include other relevant product details here
         }));
-    
+        cartItemsArray= cartItemsArray.filter(item=>item.quantity>0)
         if (cartItemsArray.length === 0) {
           return toast.error('Cart is empty');
         }
